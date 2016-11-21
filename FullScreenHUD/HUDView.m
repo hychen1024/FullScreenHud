@@ -60,13 +60,13 @@ static NSString *const failure = @"加载失败，请重新加载";
         make.size.mas_equalTo(CGSizeMake(120, 120)).priorityMedium();
     }];
     [self.textLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.imageView.mas_bottom).offset(10);
+        make.top.equalTo(self.imageView.mas_bottom).offset(20);
         make.centerX.equalTo(self);
         make.left.equalTo(self).offset(20);
-        make.height.equalTo(@20);
+        make.height.equalTo(@25);
     }];
     [self.reloadButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.textLabel.mas_bottom).offset(10);
+        make.top.equalTo(self.textLabel.mas_bottom).offset(20);
         make.centerX.equalTo(self);
         make.size.mas_equalTo(CGSizeMake(120, 35));
     }];
@@ -86,7 +86,7 @@ static NSString *const failure = @"加载失败，请重新加载";
 
 - (void)setupSubviewWithHudType:(YCHUDLoadingType)hudType{
     self.textLabel.text = hudType == YCHUDLoadingTypeFailure?failure:Loading;
-    
+    self.reloadButton.hidden = hudType == YCHUDLoadingTypeFailure?NO:YES;
     if (hudType < 3) {//图片or图片数组
         if (hudType == 2) {
             self.failureImageView.hidden = NO;
@@ -331,7 +331,7 @@ static NSString *const failure = @"加载失败，请重新加载";
 - (UILabel *)textLabel{
     if (!_textLabel) {
         _textLabel = [[UILabel alloc] init];
-        _textLabel.font = [UIFont systemFontOfSize:15];
+        _textLabel.font = [UIFont systemFontOfSize:17];
         _textLabel.textColor = [UIColor blackColor];
         _textLabel.textAlignment = NSTextAlignmentCenter;
         _textLabel.backgroundColor = [UIColor clearColor];
