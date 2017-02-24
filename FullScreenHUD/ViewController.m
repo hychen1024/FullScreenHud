@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
     HUDView *hudView = [[HUDView alloc] initWithFrame:self.view.bounds];
     //失败图片
     hudView.failureImage = [UIImage imageNamed:@"1"];
